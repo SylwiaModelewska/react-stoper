@@ -16,18 +16,20 @@ const Timer = () => {
   }, []);
 
   const start = () => {
-    setTimer(setInterval(() => {
-      setTime(prevValue => prevValue + 1);
-    }, 1))
+    if(!timer){
+      setTimer(setInterval(() => {
+        setTime(prevValue => prevValue + 1);
+      }, 1))
+    }
   };
 
   const stop = () => {
-    clearInterval(timer);
+    setTimer(clearInterval(timer));
   }
 
   const reset = () => {
     setTime(0);
-    clearInterval(timer);
+    setTimer(clearInterval(timer));
   }
 
   return (
